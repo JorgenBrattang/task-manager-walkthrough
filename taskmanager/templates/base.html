@@ -16,7 +16,7 @@
 <body>
 
     <header>
-        <nav class="red darken-1">
+        <nav class="blue darken-1">
             <div class="nav-wrapper">
                 <a href="{{ url_for('home') }}" class="brand-logo">Logo</a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
@@ -40,17 +40,19 @@
         {% endblock %}
     </main>
 
-    <footer class="page-footer red darken-1">
+    <footer class="page-footer blue darken-1">
         <div class="footer-copyright">
             <div class="container">
                 For educational purposes only
-                <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/jorgenbrattang/" target="_blank">&copy; Jörgen Brattäng</a>
+                <a class="grey-text text-lighten-4 right" href="https://www.linkedin.com/in/jorgenbrattang/"
+                    target="_blank">&copy; Jörgen Brattäng</a>
             </div>
         </div>
     </footer>
 
     <!-- Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
