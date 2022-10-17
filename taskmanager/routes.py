@@ -6,7 +6,31 @@ from taskmanager.models import Category, Task
 @app.route("/")
 def home():
     tasks = list(Task.query.order_by(Task.id).all())
+    if request.method == "POST":
+        category = Category(category_name=request.form.get("category_name"))
+        db.session.add(category)
+        db.session.commit()
+        return redirect(url_for("home"))
     return render_template("tasks.html", tasks=tasks)
+
+
+@app.route("/edit_task/<int:task_id>", methods=["GET", "POST"])
+def edit_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    if request.method == "POST":
+        task.task_name = request.form.get("task_name")
+        db.session.commit()
+        return redirect(url_for("home"))
+
+    return render_template("edit_task.html", task=task)
+
+
+@app.route("/delete_task/<int:task_id>")
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for("home"))
 
 
 @app.route("/categories")
